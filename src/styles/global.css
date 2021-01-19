@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(28, 28, 34);
+  }
+  
+  html {
+  
+    background-color: #dfdfe7;
+  }
+  
+  
+  a {
+    text-decoration: none;
+  }
+  
+  img {
+      max-width: 100%;
+      height: auto;
+      overflow: hidden;
+      padding: 1em;
+      margin: 0 auto;
+  }
+  code {
+      background-color: rgb(172, 170, 165);
+      padding: 0.2em 0.4em;
+      border-radius: 0.3em;
+      margin: 0 0.1em;
+      color: rgb(7, 10, 58);
+  }
