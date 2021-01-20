@@ -1,31 +1,98 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: rgb(28, 28, 34);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: rgb(28, 28, 34);
+  text-align: justify;
+}
+
+html {
+  background-color: #f3f3ee;
+  font-size: 14px;
+  line-height: 1.7;
+}
+body {
+  border-top: 5px solid#5f6467c9;
+  border-left: 2px solid #2d2d2d;
+  border-image: linear-gradient(to bottom, #d8dac9, rgba(255,255,255,0)) 1 100%;
+}
+p {
+  margin:0.2em 0;
+}
+
+a {
+  text-decoration: none;
+  color: #2d2d2d;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  overflow: hidden;
+  padding: 1em 0;
+  margin: 0 auto;
+}
+pre {
+  background-color: #2d2d2d;
+  color: #dfdfe7;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border: none;
+}
+code {
+  background-color: rgb(216, 215, 212);
+  padding: 0.1em 0.5em;
+  border-radius: 0.3em;
+  margin: 0 0.1em;
+  color: rgb(41, 40, 40);
+  text-shadow: 0 0 15px #888888;
+  /* box-shadow: inset 0px 5px 5px 1px #bbb9b9; */
+  line-height: 1;
+}
+pre > code {
+  background: none;
+  color: rgb(215, 228, 217);
+  text-shadow: none;
+  box-shadow: none;
+}
+
+h1 {
+  font-size: 1.8rem;
+  border-bottom: 1px solid #222;
+  margin-bottom: 0.4em;
+}
+h2 {
+  font-size: 1.4rem;
+  margin: 1em 0 0.4em;
+}
+h3 {
+  font-size: 1.2rem;
+  margin-top: 0.8em;
+}
+hr {
+  margin-top: 2rem;
+}
+i {
+  display: list-item;
+  margin: 0 3% 40px;
+  position: relative;
+  flex: 1 0 auto;
+  width: var(--imgWidth-1);
+
+  @media (max-width: 480px) {
+    width: var(--imgWidth-4);
   }
-  
-  html {
-  
-    background-color: #dfdfe7;
+  @media (min-width: 480px) and (max-width: 720px) {
+    width: var(--imgWidth-3);
   }
-  
-  
-  a {
-    text-decoration: none;
+  @media (min-width: 720px) and (max-width: 960px) {
+    width: var(--imgWidth-2);
   }
-  
-  img {
-      max-width: 100%;
-      height: auto;
-      overflow: hidden;
-      padding: 1em;
-      margin: 0 auto;
+  @media (min-width: 960px) and (max-width: 1200px) {
+    width: var(--imgWidth-1);
   }
-  code {
-      background-color: rgb(172, 170, 165);
-      padding: 0.2em 0.4em;
-      border-radius: 0.3em;
-      margin: 0 0.1em;
-      color: rgb(7, 10, 58);
+  @media (min-width: 1200px) {
+    width: var(--imgWidth-0);
   }
+}

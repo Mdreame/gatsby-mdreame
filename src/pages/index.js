@@ -8,9 +8,10 @@ export default ({ data }) => {
     <Layout>
       <main
         style={{
-          margin: `2rem 0.6rem`,
+          margin: `1rem auto`,
           minHeight: `600px`,
           padding: `0.5em`,
+          maxWidth: `800px`,
         }}
       >
         <p
@@ -23,22 +24,27 @@ export default ({ data }) => {
           Posts: {data.allMarkdownRemark.totalCount}
         </p>
         {data.allMarkdownRemark.edges.map(({ node }) => (
-          <div key={node.id} style={{
-            marginBottom: `1em`,
-          }}>
+          <div
+            key={node.id}
+            style={{
+              marginBottom: `0.8em`,
+              overflow: `auto`,
+            }}
+          >
             <Link to={node.fields.slug}>
               <h3
                 style={{
                   display: "flex",
                   justifyContent: `space-between`,
                   alignItems: `center`,
+                  marginTop: 0,
                 }}
               >
                 {node.frontmatter.title}
                 <span
                   style={{
                     color: `#aaa`,
-                    fontSize: 1,
+                    fontSize: `0.8em`,
                   }}
                 >
                   {node.frontmatter.date}
@@ -47,8 +53,8 @@ export default ({ data }) => {
             </Link>
             <p
               style={{
-                margin: `1em`,
-                fontSize: 1,
+                margin: `0.2em 0`,
+                fontSize: `1rem`,
                 color: `#555`,
               }}
             >
@@ -72,7 +78,10 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { frontmatter: { categrory: { nin: ["bookreviews"] } } }
+    ) {
       edges {
         node {
           id
@@ -80,6 +89,7 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "YYYY-MM-DD")
+            categrory
           }
           fields {
             slug

@@ -2,6 +2,7 @@
 title: "Github加速"
 date: "2020-12-10"
 tags: "编程"
+categrory: "博客"
 ---
 
 主要解决 Github 的 relaese 文件下载和 Git 操作过慢的问题。

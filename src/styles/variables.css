@@ -1,0 +1,10 @@
+:root {
+    --colsNum-5: repeat(5, 1fr);
+    --colsNum-4: repeat(4, 1fr);
+    --colsNum-3: repeat(3, 1fr);
+    --colsNum-2: repeat(2, 1fr);
+    --colsNum-1: 1fr;
+
+
+    counter-reset: imgNum;
+}

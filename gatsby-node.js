@@ -1,5 +1,7 @@
 const path = require(`path`)
 const { createFilePath } = require("gatsby-source-filesystem")
+
+// 每当创建新节点（或更新）时，Gatsby 都会调用 onCreateNode 函数。
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === "MarkdownRemark") {
@@ -12,8 +14,9 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
+// 创建页面
 exports.createPages = async ({ graphql, actions }) => {
-    const {createPage} = actions
+  const { createPage } = actions
   const result = await graphql(`
     query {
       allMarkdownRemark {
@@ -27,14 +30,16 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-
-  result.data.allMarkdownRemark.edges.forEach(({node}) => {
-      createPage({
-          path: node.fields.slug,
-          component: path.resolve(`./src/templates/blog-template.js`),
-          context: {
-              slug: node.fields.slug
-          },
-      })
+    console.log(result)
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/blog-template.js`),
+      context: {
+        slug: node.fields.slug,
+      },
+    })
   })
+
+  
 }
