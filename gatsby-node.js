@@ -100,11 +100,12 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   //生成标签相关的所有的内容的页面
   allTags.forEach( tag => {
+    let regexTag = `/${tag}/`
     createPage({
       path:`/tags/${tag}`,
       component: path.resolve('./src/templates/tag-relative-books-template.js'),
       context: {
-        tag,
+        regexTag,
       },
 
     })

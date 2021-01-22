@@ -39,7 +39,7 @@ export default ({ children }) => (
       }}
     >
       <Link to="/">
-        <h1 style={{ border: `none`, margin: 0 }}>
+        <h1 style={{ border: `none`, marginBottom: `0.1em` }}>
           <span role="img" aria-labelledby="blogpage">
             💻
           </span>

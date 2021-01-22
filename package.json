@@ -7,7 +7,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "deploy": "gatsby build && cd public && git add . && git commit -m \"v0.3.6 solve img skeleton shrink and add tags page\" && git push vmgit master ",
+    "deploy": "gatsby build && cd public && git add . && git commit -m \"v0.4 now tags page can link to any blogpage\" && git push vmgit master ",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
