@@ -1,16 +1,17 @@
 // 读书主页
 import React from "react"
 import Layout from "../components/layout"
+import {graphql} from "gatsby"
 import GridBox from "../components/gridbox"
 import Bookscover from "../components/partical/bookitem"
+import TotalBar from "../components/partical/totalbar"
 
 export default ({ data }) => {
   const postReviews = data.allMarkdownRemark
-  console.log(postReviews)
 
   return (
     <Layout>
-      已写书评：{postReviews.totalCount}篇
+      <TotalBar>Readed：{postReviews.totalCount}</TotalBar>
       <GridBox>
         {postReviews.edges.map(({ node }) => (
           <Bookscover
@@ -21,6 +22,7 @@ export default ({ data }) => {
             title={node.frontmatter.title}
             bookName={node.frontmatter.bookname}
             bookAuthor={node.frontmatter.bookauthor}
+            doubanlink={node.frontmatter.doubanlink}
             starts={node.frontmatter.starts}
             classify={node.frontmatter.classify}
             comment={node.frontmatter.comment}
@@ -44,7 +46,7 @@ export default ({ data }) => {
 export const query = graphql`
   query {
     allMarkdownRemark(
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: { fields: frontmatter___date, order: ASC }
       filter: { frontmatter: { categrory: { eq: "bookreviews" } } }
     ) {
       edges {
@@ -58,6 +60,7 @@ export const query = graphql`
             bookauthor
             bookcover
             bookname
+            doubanlink
             starts
             classify
             comment

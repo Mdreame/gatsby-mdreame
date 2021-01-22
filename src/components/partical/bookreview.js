@@ -16,7 +16,7 @@ export const query = graphql`
   query {
     allMarkdownRemark(
       filter: { frontmatter: { categrory: { eq: "bookreviews" } } }
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: { fields: frontmatter___date, order: ASC }
     ) {
       edges {
         node {

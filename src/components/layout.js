@@ -6,20 +6,26 @@ const ListLink = props => (
   <li
     css={css`
       font-size: 2rem;
-    
     `}
   >
-    <Link to={props.to}>{props.children}</Link>
+    <Link css={css`
+      color: #2d2d2d;
+      cursor: pointer;
+      &:hover{
+        color:#2d2d2d88;
+      }
+    `} to={props.to}>
+      {props.children}
+    </Link>
   </li>
 )
 
 export default ({ children }) => (
   <div
     style={{
-      // backgroundColor: `lightblue`,
-      margin: `2rem 2%`,
+      margin: `0 auto`,
       maxWidth: `1200px`,
-      padding: `0 1.5rem 5rem`,
+      padding: `1rem 1.5rem 5rem`,
     }}
   >
     <header
@@ -30,11 +36,10 @@ export default ({ children }) => (
         alignItems: `center`,
         margin: `1rem auto`,
         padding: `0 0 0 0.5em`,
-        // maxWidth: `800px`,
       }}
     >
       <Link to="/">
-        <h1 style={{ border: `none` }}>
+        <h1 style={{ border: `none`, margin: 0 }}>
           <span role="img" aria-labelledby="blogpage">
             💻
           </span>

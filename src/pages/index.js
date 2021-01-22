@@ -3,7 +3,6 @@ import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
 
 export default ({ data }) => {
-  console.log(data)
   return (
     <Layout>
       <main
@@ -61,8 +60,11 @@ export default ({ data }) => {
               {node.excerpt}
               <span
                 style={{
-                  float: `right`,
-                  color: `#666`,
+                  float: 'right',
+                  backgroundColor: '#00355a12',
+                  borderRadius: '3px',
+                  padding: '0 0.5em',
+                  color: '#5a5c5d',
                 }}
               >
                 {node.timeToRead}分钟读完

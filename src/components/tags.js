@@ -1,11 +1,12 @@
 import React from "react"
 import styled from "@emotion/styled"
-export default () => {
+import { Link } from "gatsby"
+export default ({ children }) => {
   const TagList = styled.ul`
     margin: 1em;
     padding: 1em 0;
   `
-  const TagItem = styled.a`
+  const TagItem = styled.span`
     display: inline-block;
     background-color: rgba(255, 255, 255, 0.5);
     color: #1a3743;
@@ -25,8 +26,11 @@ export default () => {
 
   return (
     <TagList>
-      <TagItem>132</TagItem>
-      <TagItem>132</TagItem>
+      {children.split(",").map((tags, index) => (
+        <Link to={"/tags/" + tags} key={index}>
+          <TagItem >{tags}</TagItem>
+        </Link>
+      ))}
     </TagList>
   )
 }

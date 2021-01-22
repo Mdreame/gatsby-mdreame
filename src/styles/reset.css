@@ -368,19 +368,7 @@ address, caption, cite, code, dfn, em, strong, th, var {
 a{
     text-decoration:none;
 }
-a:link{
-    color:rgb(36, 34, 173);
-}
-a:visited{
-    color:rgb(163, 163, 163);
-}
-a:hover{
-    color:rgb(177, 177, 177);
-    cursor: pointer;
-}
-a:active{
-    color:rgb(28, 28, 34);
-}
+
 input::-ms-clear{
     display:none;
     }
