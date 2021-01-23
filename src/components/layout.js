@@ -5,7 +5,11 @@ import { css } from "@emotion/react"
 const ListLink = props => (
   <li
     css={css`
-      font-size: 2rem;
+      font-size: 1.75rem;
+      font-weight: lighter;
+      & a {
+        border-bottom: none;
+      }
     `}
   >
     <Link css={css`
@@ -25,18 +29,20 @@ export default ({ children }) => (
     style={{
       margin: `0 auto`,
       maxWidth: `1200px`,
-      padding: `1rem 1.5rem 5rem`,
+      padding: `1rem 1.875rem 5rem`,
     }}
   >
     <header
-      style={{
-        display: `flex`,
-        flexDirection: `row`,
-        justifyContent: `space-between`,
-        alignItems: `center`,
-        margin: `1rem auto`,
-        padding: `0 0 0 0.5em`,
-      }}
+      css={css`
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1rem auto;
+        & a {
+          border-bottom: none;
+        }
+      `}
     >
       <Link to="/">
         <h1 style={{ border: `none`, marginBottom: `0.1em` }}>

@@ -56,7 +56,7 @@ categrory: "博客"
 
 通过 IP 查询获取，github 的实时地址，添加到 hosts 文件。
 
-1、修改[C:\Windows\System32\drivers\etc\hosts](C:\Windows\System32\drivers\etc\hosts)文件的权限，指定可写入：
+1、修改`C:\Windows\System32\drivers\etc\hosts`文件的权限，指定可写入：
 
 右击->hosts->属性->安全->编辑->点击 Users->在 Users 的权限“写入”后面打勾。
 

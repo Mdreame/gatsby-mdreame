@@ -9,7 +9,7 @@ export default ({ data }) => {
     <Layout>
       {/* <SEO title={post.frontmatter.title} description={post.excerpt}></SEO> */}
       {data.allMarkdownRemark.nodes.map( node => (
-        <div>
+        <div key={node.id}>
           <Link to={node.fields.slug}><h2>{node.frontmatter.title}</h2></Link>
           <p>{node.excerpt}</p>
         </div>
@@ -29,6 +29,7 @@ export const query = graphql`
           slug
         }
         excerpt
+        id
       }
     }
   }

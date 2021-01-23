@@ -23,6 +23,7 @@ export default ({ data }) => {
             bookName={node.frontmatter.bookname}
             bookAuthor={node.frontmatter.bookauthor}
             doubanlink={node.frontmatter.doubanlink}
+            wereadlink={node.frontmatter.wereadlink}
             starts={node.frontmatter.starts}
             classify={node.frontmatter.classify}
             comment={node.frontmatter.comment}
@@ -61,6 +62,7 @@ export const query = graphql`
             bookcover
             bookname
             doubanlink
+            wereadlink
             starts
             classify
             comment

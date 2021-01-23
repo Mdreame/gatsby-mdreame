@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
+import WereadIcon from "../../assets/wereadicon.png"
 
 export default props => {
   const BookItem = styled.li`
@@ -8,6 +9,10 @@ export default props => {
     margin: 0 3% 40px;
     position: relative;
     padding: 0 0 0 0.5em;
+
+    & p {
+      margin-bottom: 0;
+    }
 
     &:after {
       counter-increment: imgNum;
@@ -61,7 +66,7 @@ export default props => {
 
   const BookName = styled.h4`
     color: #31845a;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     padding: 0;
     color: #1a3743;
     &:hover {
@@ -76,16 +81,18 @@ export default props => {
   const BookCategory = styled.p`
     display: inline-block;
     font-size: 0.8rem;
+    line-height: 1.75;
     background-color: #aaa5;
-    padding: 0.1em 0.4em;
+    padding: 0 0.4em;
     border-radius: 0.4em;
     color: #555;
   `
   const BookPreview = styled.a`
     line-height: 16px;
+    border-bottom: none;
     & > svg {
-      opacity: 0.5;
-      margin: 0.2em 0 -0.5em 0;
+      width: 90%;
+      height: 90%;
       &:hover {
         opacity: 1;
         cursor: pointer;
@@ -100,12 +107,15 @@ export default props => {
   `
   const Starts = styled.p`
     color: transparent;
+    font-size: 1.5rem;
+    line-height: 1.25;
     text-shadow: 0 0 #a0a0a0;
+    margin-top: -0.2rem;
   `
 
   return (
     <BookItem>
-      <Link to={props.to}>
+      <Link to={props.to} style={{borderBottom: `none`}}>
         <BookCover
           src={props.img}
           alt={props.alt}
@@ -118,7 +128,7 @@ export default props => {
         </Link>
         <BookAuthor>{props.bookAuthor}</BookAuthor>
         <BookCategory>{props.classify}</BookCategory>
-        <p>
+        <p style={{ display: "flex", marginTop: `0.5rem` }}>
           <BookPreview
             href={props.doubanlink}
             target="_blank"
@@ -141,6 +151,19 @@ export default props => {
               ></path>
             </svg>
           </BookPreview>
+          {props.wereadlink && (
+            <BookPreview
+              href={props.wereadlink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={WereadIcon}
+                alt="WereadIcon"
+                style={{ padding: 0, height: `90%`, width: `90%` }}
+              ></img>
+            </BookPreview>
+          )}
         </p>
         <Starts>{props.starts}</Starts>
       </BookDetials>

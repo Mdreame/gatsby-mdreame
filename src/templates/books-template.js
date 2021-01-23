@@ -8,17 +8,23 @@ export default ({ data }) => {
   return (
     <Layout>
       {/* <SEO title={post.frontmatter.title} description={post.excerpt}></SEO> */}
-      <div
-        style={{
-          margin: `2% 4%`,
-        }}
-      >
+      <div>
         <h1>{post.frontmatter.title}</h1>
+        <p>
+          <img
+            src={post.frontmatter.bookcover}
+            alt={post.frontmatter.bookcover}
+          ></img>
+        </p>
+        <p>{post.frontmatter.author}</p>
+        <p>{post.frontmatter.bookname}</p>
         <p>{post.frontmatter.starts}</p>
-
-        <Tags>{post.frontmatter.tags}</Tags>
+        <p>阅读时间：{post.frontmatter.date}</p>
+        <p>分类：{post.frontmatter.classify}</p>
+        <p>{post.excerpt}</p>
 
         <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+        <Tags>{post.frontmatter.tags}</Tags>
       </div>
     </Layout>
   )

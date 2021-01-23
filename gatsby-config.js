@@ -7,7 +7,7 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: ``,
+    title: `Mdreame`,
     description: `一个在现实中无处安身的人`,
     author: `xujiang`
 

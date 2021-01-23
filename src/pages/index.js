@@ -7,10 +7,8 @@ export default ({ data }) => {
     <Layout>
       <main
         style={{
-          margin: `1rem auto`,
-          minHeight: `600px`,
-          padding: `0.5em`,
-          maxWidth: `800px`,
+          margin: `0 auto`,
+          minHeight: `800px`,
         }}
       >
         <p
@@ -53,7 +51,7 @@ export default ({ data }) => {
             <p
               style={{
                 margin: `0.2em 0`,
-                fontSize: `1rem`,
+                fontSize: `1em`,
                 color: `#555`,
               }}
             >

@@ -352,7 +352,8 @@ template {
 HTML, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote,
 pre, form, fieldset, table, th, td {
     border:none;
-    font-family:"微软雅黑","黑体","宋体";
+    font-family:"Helvetica","微软雅黑","黑体","宋体";
+    font-weight: lighter;
     font-size:14px;
     margin:0px;
     padding:0px;

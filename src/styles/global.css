@@ -2,49 +2,73 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: rgb(28, 28, 34);
   word-wrap: break-word;
+  color: #2d2d2d;
+ 
 }
+
 html,
 body {
   overflow-x: hidden;
 }
 html {
   background-color: #f4efec;
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 16px;
+  line-height: 1.8;
 }
 body {
   border-top: 5px solid #00355a;
 }
+body:after {
+  position: absolute;
+  top: 0;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  opacity: 0.1;
+  bottom: 0;
+  /* background: url(https://picture.mdreame.life/wuyuan.jpg); */
+  z-index: -1;
+}
 
 a {
-  color: rgb(22, 61, 170);
   cursor: pointer;
+  border-bottom: 2px solid #8394d6ab;
+}
+p{
+  margin-bottom: 0.75rem;
+}
+p > img{
+  padding: 0.75rem 0;
 }
 img {
   max-width: 100%;
   height: auto;
   overflow: hidden;
-  padding: 1em 0;
   margin: 0 auto;
 }
 pre {
   background-color: #2d2d2d;
   color: #dfdfe7;
   padding: 0.5em;
+  border-radius: 0.3em;
   margin: 0.5em 0;
   overflow: auto;
   border: none;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  max-height: 500px;
 }
 code {
-  background-color: rgb(216, 215, 212);
+  background-color: rgba(27, 31, 35, 0.08);
   padding: 0.1em 0.5em;
   border-radius: 0.3em;
   margin: 0 0.1em;
   color: rgb(41, 40, 40);
   text-shadow: 0 0 15px #888888;
-  /* box-shadow: inset 0px 5px 5px 1px #bbb9b9; */
   line-height: 1;
 }
 pre > code {
@@ -56,9 +80,11 @@ pre > code {
 ul,
 ol {
   padding: 1em 0 1em 2em;
+  
 }
+
 h1 {
-  font-size: 1.8rem;
+  font-size: 1.75rem;
   border-bottom: 1px solid #222;
   margin-bottom: 0.4em;
 }
@@ -68,7 +94,12 @@ h2 {
 }
 h3 {
   font-size: 1.2rem;
+  font-weight: 500;
   margin-top: 0.8em;
+}
+h4{
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 hr {
   margin-top: 2rem;
