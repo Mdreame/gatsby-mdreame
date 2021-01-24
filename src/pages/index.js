@@ -62,7 +62,8 @@ export default ({ data }) => {
                   backgroundColor: '#00355a12',
                   borderRadius: '3px',
                   padding: '0 0.5em',
-                  color: '#5a5c5d',
+                lineHeight: `1.5`,
+                color: '#5a5c5d',
                 }}
               >
                 {node.timeToRead}分钟读完

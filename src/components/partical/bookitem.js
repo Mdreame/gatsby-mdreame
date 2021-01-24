@@ -21,7 +21,7 @@ export default props => {
       width: 3em;
       height: 3em;
       line-height: 3em;
-      font-weight: 600;
+      font-weight: 300;
       text-align: center;
       border-radius: 50%;
       background-color: #fff;
@@ -107,7 +107,7 @@ export default props => {
   `
   const Starts = styled.p`
     color: transparent;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 1.25;
     text-shadow: 0 0 #a0a0a0;
     margin-top: -0.2rem;
@@ -143,6 +143,8 @@ export default props => {
               p-id="593"
               width="24"
               height="24"
+              style={{maxHeight:"`24px",
+              maxWidth:`24px`}}
             >
               <path
                 d="M687.8 607.5H339.7c37.4 62.9 71.5 130.3 102.1 202.1h142.1c43.6-68.2 78.2-135.6 103.9-202.1z m41.7-76.7V381.5H302v149.4h427.5z m173.1 356H121.4v-77.1h233.7c-28.6-62.9-58.9-117.3-90.7-163.1l60.1-39H219.2V303h593.6v304.5H702.3l60.1 39.9c-28.4 62.9-57.9 117-88.6 162.2h228.8v77.2z m-17.1-673.3H143.7v-76.2h741.8v76.2z"

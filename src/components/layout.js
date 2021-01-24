@@ -12,13 +12,15 @@ const ListLink = props => (
       }
     `}
   >
-    <Link css={css`
-      color: #2d2d2d;
-      cursor: pointer;
-      &:hover{
-        color:#2d2d2d88;
-      }
-    `} to={props.to}>
+    <Link
+      css={css`
+        cursor: pointer;
+        &:hover {
+          color: #2d2d2d88;
+        }
+      `}
+      to={props.to}
+    >
       {props.children}
     </Link>
   </li>
@@ -58,6 +60,7 @@ export default ({ children }) => (
           marginLeft: `3em`,
           display: `flex`,
           minWidth: `40%`,
+          padding: 0,
           justifyContent: `space-between`,
         }}
       >

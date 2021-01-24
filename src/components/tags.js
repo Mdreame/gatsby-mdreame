@@ -3,14 +3,25 @@ import styled from "@emotion/styled"
 import { Link } from "gatsby"
 export default ({ children }) => {
   const TagList = styled.ul`
-    margin: 1em 0;
-    padding: 1em 0;
+    margin: 1rem 0 2rem 0;
+    // padding: 1em 0;
+    padding: 0;
+    border-top: 1px dashed #8c7f7f;
+  `
+  const TagMark = styled.span`
+    display: inline-block;
+    font-size:0.875em;
+    background-color: #96aac575;
+    padding: 2px 10px 3px;
+    // border: 1px dashed #8c7f7f;
+    border-top: none;
+    float: right;
   `
   const TagItem = styled.span`
     display: inline-block;
     background-color: rgba(255, 255, 255, 0.5);
     color: #1a3743;
-    font-size: 0.75rem;
+    font-size: 0.875em;
     line-height: 1.1em;
     margin: 0 0.55em 1em 0;
     padding: 0.4em 0.5em;
@@ -26,9 +37,10 @@ export default ({ children }) => {
 
   return (
     <TagList>
+      <TagMark>标签</TagMark>
       {children.split(",").map((tags, index) => (
-        <Link to={"/tags/" + tags} key={index} style={{borderBottom: `none`}}>
-          <TagItem >{tags}</TagItem>
+        <Link to={"/tags/" + tags} key={index} style={{ borderBottom: `none` }}>
+          <TagItem>{tags}</TagItem>
         </Link>
       ))}
     </TagList>
