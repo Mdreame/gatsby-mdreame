@@ -7,7 +7,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "deploy": "gatsby build && cd public && git add . && git commit -m \"v0.4.2 totally done bookreview page \" && git push vmgit master ",
+    "deploy": "gatsby build && cd public && git add . && git commit -m \"v0.4.3 add alltags page \" && git push vmgit master ",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

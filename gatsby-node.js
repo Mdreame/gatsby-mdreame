@@ -106,6 +106,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve('./src/templates/tag-relative-books-template.js'),
       context: {
         regexTag,
+        allTags,
       },
 
     })

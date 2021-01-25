@@ -45,7 +45,7 @@ export default ({ data }) => {
     right: 15px;
     z-index: -1;
 
-    @media (min-width: 720px){
+    @media (min-width: 720px) {
       top: 25%;
       left: -80%;
     }
@@ -53,7 +53,7 @@ export default ({ data }) => {
   const Sentence = styled.span`
     display: block;
     background-color: #e4dfdf9c;
-    
+
     font-size: 0.875rem;
     padding: 1.5em 1em 1em;
     backdrop-filter: blur(5px);
@@ -65,7 +65,6 @@ export default ({ data }) => {
     float: left;
     margin: 180px 30px 20px 10px;
     width: 85%;
-
 
     &::first-letter {
       margin-left: 2em;
@@ -81,7 +80,7 @@ export default ({ data }) => {
       padding: 0;
     }
 
-    @media (min-width: 720px){
+    @media (min-width: 720px) {
       float: right;
       width: 70%;
       margin: 30px -70px 0 0;
@@ -101,6 +100,7 @@ export default ({ data }) => {
   const ClearDiv = styled.div`
     clear: both;
   `
+
   return (
     <Layout>
       {/* <SEO title={post.frontmatter.title} description={post.excerpt}></SEO> */}
@@ -118,11 +118,15 @@ export default ({ data }) => {
             alt={post.frontmatter.bookcover}
           ></BookCover>
           <Sentence>
-            {post.frontmatter.sentence ? post.frontmatter.sentence : `主题阅读：“各时代怎么会有各时代的特产呢？每一代的大作家他们从前代承受了些什么？自己又创造了什么？”这便可以作为读书的一个出发点，即求知欲。从哲学到文学可以看成每个时代的思想开枝散叶，化成一个个伟大的作家，彼此影响成就，整个下来就是一部文学史。学会将书本分门别类，根据自身水平增减。`}
+            {post.frontmatter.sentence
+              ? post.frontmatter.sentence
+              : `主题阅读：“各时代怎么会有各时代的特产呢？每一代的大作家他们从前代承受了些什么？自己又创造了什么？”这便可以作为读书的一个出发点，即求知欲。从哲学到文学可以看成每个时代的思想开枝散叶，化成一个个伟大的作家，彼此影响成就，整个下来就是一部文学史。学会将书本分门别类，根据自身水平增减。`}
           </Sentence>
           <ClearDiv></ClearDiv>
         </BookClip>
-        <Tags>{post.frontmatter.tags}</Tags>
+
+        {/* 将标签字符串格式化为数组 */}
+        <Tags>{post.frontmatter.tags.split(",")}</Tags>
 
         <BookReview
           dangerouslySetInnerHTML={{ __html: post.html }}
