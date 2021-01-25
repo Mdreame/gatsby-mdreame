@@ -28,11 +28,14 @@ const ListLink = props => (
 
 export default ({ children }) => (
   <div
-    style={{
-      margin: `0 auto`,
-      maxWidth: `1200px`,
-      padding: `1rem 1.875rem 5rem`,
-    }}
+    css={css`
+      margin: 0 auto;
+      max-width: 1000px;
+      padding: 1rem 1.75rem 5rem 2rem;
+      & p {
+        margin-bottom: 1.125rem;
+      }
+    `}
   >
     <header
       css={css`

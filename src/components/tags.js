@@ -3,14 +3,14 @@ import styled from "@emotion/styled"
 import { Link } from "gatsby"
 export default ({ children }) => {
   const TagList = styled.ul`
-    margin: 1rem 0 2rem 0;
+    margin: 1rem 0 1.5rem 0;
     // padding: 1em 0;
     padding: 0;
     border-top: 1px dashed #8c7f7f;
   `
   const TagMark = styled.span`
     display: inline-block;
-    font-size:0.875em;
+    font-size:0.875rem;
     background-color: #96aac575;
     padding: 2px 10px 3px;
     // border: 1px dashed #8c7f7f;

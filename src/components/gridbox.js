@@ -11,22 +11,22 @@ export default ({children}) => (
       column-gap: 5%;
       padding: 0;
 
-      @media (max-width: 460px) {
+      @media (max-width: 480px) {
         grid-template-columns: var(--colsNum-1);
       }
-      @media (min-width: 460px) and (max-width: 720px) {
+      @media (min-width: 480px) and (max-width: 720px) {
         grid-template-columns: var(--colsNum-2);
       }
       @media (min-width: 720px) and (max-width: 1000px) {
         grid-template-columns: var(--colsNum-3);
       }
-      @media (min-width: 1000px) and (max-width: 1200px) {
-        grid-template-columns: var(--colsNum-4);
-      }
-      @media (min-width: 1200px) {
-        grid-template-columns: var(--colsNum-5);
-        column-gap: 2%;
-      }
+      // @media (min-width: 1024px) and (max-width: 1200px) {
+      //   grid-template-columns: var(--colsNum-4);
+      // }
+      // @media (min-width: 1200px) {
+      //   grid-template-columns: var(--colsNum-4);
+      //   column-gap: 2%;
+      // }
     `}
   >
       {children}

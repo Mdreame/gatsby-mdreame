@@ -341,58 +341,91 @@ template {
 }
 
 /* 阿里云样式 */
-HTML, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote,
-pre, form, fieldset, table, th, td {
-    border:none;
-    font-family: Helvetica,sans-serif,"微软雅黑","黑体","宋体";
-    font-size:14px;
-    font-weight: lighter;
-    margin:0px;
-    padding:0px;
-    }
-html,body{
-    height: 100%;
-    width: 100%;
-    }
-address, caption, cite, code, dfn, em, strong, th, var {
-    font-style: normal;
-    font-weight: normal;
+HTML,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+dl,
+li,
+dt,
+dd,
+p,
+blockquote,
+pre,
+form,
+fieldset,
+table,
+th,
+td {
+  border: none;
+  font-family: Helvetica, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei",
+    sans-serif;
+  font-size: 16px;
+  /* font-weight: 400; */
+  margin: 0px;
+  padding: 0px;
 }
-a{
-    text-decoration:none;
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+a {
+  text-decoration: none;
 }
 
-input::-ms-clear{
-    display:none;
-    }
-input::-ms-reveal{
-    display:none;
+input::-ms-clear {
+  display: none;
 }
-input{
-    -webkit-appearance: none;
-    margin: 0;
-    outline: none;
-    padding: 0;
+input::-ms-reveal {
+  display: none;
 }
-input::-webkit-input-placeholder{
-    color: #ccc;
+input {
+  -webkit-appearance: none;
+  margin: 0;
+  outline: none;
+  padding: 0;
 }
-input::-ms-input-placeholder{
-    color: #ccc;
+input::-webkit-input-placeholder {
+  color: #ccc;
 }
-input::-moz-placeholder{
-    color: #ccc;
+input::-ms-input-placeholder {
+  color: #ccc;
 }
-input[type=submit],input[type=button]{
-    cursor: pointer;
+input::-moz-placeholder {
+  color: #ccc;
 }
-button[disabled], input[disabled] {
-    cursor: default;
+input[type="submit"],
+input[type="button"] {
+  cursor: pointer;
 }
-img{
-    border:none;
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+img {
+  border: none;
 }
 /* ul,ol,li{
     list-style-type:none;
 } */
-

@@ -58,12 +58,14 @@ export default ({ data }) => {
               {node.excerpt}
               <span
                 style={{
-                  float: 'right',
-                  backgroundColor: '#00355a12',
-                  borderRadius: '3px',
-                  padding: '0 0.5em',
-                lineHeight: `1.5`,
-                color: '#5a5c5d',
+                  float: "right",
+                  backgroundColor: "#00355a12",
+                  borderRadius: "3px",
+                  fontSize: `0.875em`,
+                  marginTop: `5px`,
+                  padding: "0 0.5em",
+                  lineHeight: `1.5`,
+                  color: "#5a5c5d",
                 }}
               >
                 {node.timeToRead}分钟读完

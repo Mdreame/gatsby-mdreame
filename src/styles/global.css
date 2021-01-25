@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #2d2d2d;
+  /* color: #2d2d2d; */
+  color: #444444;
 }
 
 html,
@@ -11,7 +12,6 @@ body {
 }
 html {
   background-color: #f4efec;
-  font-size: 16px;
   line-height: 1.8;
 }
 body {
@@ -37,9 +37,8 @@ a {
   border-bottom: 1px dashed #00355a9c;
 }
 p{
-  margin-bottom: 2em;
   text-align: justify;
-  line-height: 2;
+  line-height: 1.875;
 }
 p > img{
   padding: 0.5rem 0;
@@ -80,7 +79,6 @@ pre > code {
 ul,
 ol {
   padding: 0em 0 1em 2em;
-  
 }
 
 h1 {
@@ -105,4 +103,55 @@ h1,h2,h3,h4,h5,h6 {
 }
 hr {
   margin: 1rem 0.5rem;
+}
+
+/* 国学 */
+.tagColor-gx{
+  background-color: #CCCCCC;
+}
+/* 文学小说 */
+.tagColor-wx {
+  background-color: #FFCC99;
+}
+/* 人文社科 */
+.tagColor-rw {
+  background-color: #FFFF99;
+}
+/* 哲学宗教 */
+.tagColor-zx {
+  background-color: #99CC99;
+}
+/* 历史传记 */ 
+.tagColor-ls {
+  background-color: #666666;
+}
+/* 学习工具 */
+.tagColor-xi {
+  background-color: #ff6666c2;
+  color: #383535c7;
+}
+/* 生活休闲 */
+.tagColor-sh {
+  background-color: #33CC33;
+}
+/* 文化艺术 */
+.tagColor-wy {
+  background-color: #99CCFF;
+}
+/* 计算机与互联网 */
+.tagColor-web {
+  background-color: #FF9933;
+}
+/* 科学科普 */
+.tagColor-soci {
+  background-color: #336699;
+}
+/* 畅销励志 */
+.tagColor-lz {
+  background-color: #CC99CC;
+}
+/* 心理 */
+.tagColor-xl {
+  background-color: #006bf1bf;
+  color: aliceblue;
 }

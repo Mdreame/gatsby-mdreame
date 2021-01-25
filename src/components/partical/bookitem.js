@@ -1,14 +1,13 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
-import WereadIcon from "../../assets/wereadicon.png"
 
 export default props => {
   const BookItem = styled.li`
     display: list-item;
     margin: 0 3% 40px;
     position: relative;
-    padding: 0 0 0 0.5em;
+    // padding: 0 0 0 0.5em;
 
     & p {
       margin-bottom: 0;
@@ -18,16 +17,15 @@ export default props => {
       counter-increment: imgNum;
       content: counter(imgNum);
       display: block;
-      width: 3em;
-      height: 3em;
-      line-height: 3em;
-      font-weight: 300;
+      width: 2rem;
+      height: 2rem;
+      line-height: 2rem;
       text-align: center;
       border-radius: 50%;
       background-color: #fff;
       position: absolute;
-      top: -1.5em;
-      left: -1em;
+      top: -1rem;
+      left: -1rem;
       z-index: 1;
     }
   `
@@ -39,15 +37,20 @@ export default props => {
     margin: 3% 0 0 10%;
     padding: 0 0 1% 1%;
     overflow: hidden;
+
+    @media (min-width:480px and max-width: 900px){
+      max-width: 80px;
+    }
   `
   const BookCover = styled.img`
     display: inline-block;
     padding: 0;
-    border: 1px dotted #ddd;
+    border: 1px dotted #ddd none;
     box-shadow: 6px 8px 8px 2px #aaa8;
-    width: 50%;
-    min-width: 90px;
+    // width: 50%;
+    min-width: 100px;
     min-height: 130px;
+    max-height: 150px;
 
     &:hover {
       cursor: pointer;
@@ -66,7 +69,8 @@ export default props => {
 
   const BookName = styled.h4`
     color: #31845a;
-    font-size: 1.25rem;
+    font-size: 1rem;
+    font-weight: 300;
     padding: 0;
     color: #1a3743;
     &:hover {
@@ -76,100 +80,109 @@ export default props => {
   `
   const BookAuthor = styled.p`
     color: #555;
+    font-size: 0.75rem;
   `
 
   const BookCategory = styled.p`
     display: inline-block;
     font-size: 0.8rem;
     line-height: 1.75;
-    background-color: #aaa5;
+    // background-color: #aaa5;
     padding: 0 0.4em;
     border-radius: 0.4em;
-    color: #555;
-  `
-  const BookPreview = styled.a`
-    line-height: 16px;
-    border-bottom: none;
-    & > svg {
-      width: 90%;
-      height: 90%;
-      &:hover {
-        opacity: 1;
-        cursor: pointer;
-      }
-    }
+    // color: #555;
   `
   const BookComment = styled.div`
-    margin: 0.5em 0 0 0;
-    padding: 1em 0;
-    color: #333;
+    margin: 1.5em 0 1em 0;
+    font-size: 0.875rem;
+    color: #615959e8;
     text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
   `
-  const Starts = styled.p`
-    color: transparent;
-    font-size: 1.25rem;
-    line-height: 1.25;
-    text-shadow: 0 0 #a0a0a0;
-    margin-top: -0.2rem;
-  `
+
+  function CheckColor(props) {
+    switch (props.classify) {
+      case "文学小说":
+        return (
+          <BookCategory className="tagColor-wx">{props.classify}</BookCategory>
+        )
+      case "人文社科":
+        return (
+          <BookCategory className="tagColor-rw">{props.classify}</BookCategory>
+        )
+      case "学习工具":
+        return (
+          <BookCategory className="tagColor-xi">{props.classify}</BookCategory>
+        )
+      case "国学":
+        return (
+          <BookCategory className="tagColor-gx">{props.classify}</BookCategory>
+        )
+      case "哲学宗教":
+        return (
+          <BookCategory className="tagColor-zx">{props.classify}</BookCategory>
+        )
+      case "历史传记":
+        return (
+          <BookCategory className="tagColor-ls">{props.classify}</BookCategory>
+        )
+      case "生活休闲":
+        return (
+          <BookCategory className="tagColor-sh">{props.classify}</BookCategory>
+        )
+      case "文化艺术":
+        return (
+          <BookCategory className="tagColor-wy">{props.classify}</BookCategory>
+        )
+      case "计算机与互联网":
+        return (
+          <BookCategory className="tagColor-web">{props.classify}</BookCategory>
+        )
+      case "科学科普":
+        return (
+          <BookCategory className="tagColor-soci">
+            {props.classify}
+          </BookCategory>
+        )
+      case "畅销励志":
+        return (
+          <BookCategory className="tagColor-lz">{props.classify}</BookCategory>
+        )
+      case "心理":
+        return (
+          <BookCategory className="tagColor-xl">{props.classify}</BookCategory>
+        )
+      default:
+        return (
+          <BookCategory className="tagColor-blue">
+            {props.classify}
+          </BookCategory>
+        )
+    }
+  }
 
   return (
     <BookItem>
-      <Link to={props.to} style={{borderBottom: `none`}}>
-        <BookCover
-          src={props.img}
-          alt={props.alt}
-          title={props.title}
-        ></BookCover>
-      </Link>
-      <BookDetials>
-        <Link to={props.to}>
-          <BookName>{props.bookName}</BookName>
+      <div>
+        <Link to={props.to} style={{ borderBottom: `none` }}>
+          <BookCover
+            src={props.img}
+            alt={props.alt}
+            title={props.title}
+          ></BookCover>
         </Link>
-        <BookAuthor>{props.bookAuthor}</BookAuthor>
-        <BookCategory>{props.classify}</BookCategory>
-        <p style={{ display: "flex", marginTop: `0.5rem` }}>
-          <BookPreview
-            href={props.doubanlink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg
-              t="1611145396189"
-              className="icon"
-              viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              p-id="593"
-              width="24"
-              height="24"
-              style={{maxHeight:"`24px",
-              maxWidth:`24px`}}
-            >
-              <path
-                d="M687.8 607.5H339.7c37.4 62.9 71.5 130.3 102.1 202.1h142.1c43.6-68.2 78.2-135.6 103.9-202.1z m41.7-76.7V381.5H302v149.4h427.5z m173.1 356H121.4v-77.1h233.7c-28.6-62.9-58.9-117.3-90.7-163.1l60.1-39H219.2V303h593.6v304.5H702.3l60.1 39.9c-28.4 62.9-57.9 117-88.6 162.2h228.8v77.2z m-17.1-673.3H143.7v-76.2h741.8v76.2z"
-                fill="#58CB6A"
-                p-id="594"
-              ></path>
-            </svg>
-          </BookPreview>
-          {props.wereadlink && (
-            <BookPreview
-              href={props.wereadlink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={WereadIcon}
-                alt="WereadIcon"
-                style={{ padding: 0, height: `90%`, width: `90%` }}
-              ></img>
-            </BookPreview>
-          )}
-        </p>
-        <Starts>{props.starts}</Starts>
-      </BookDetials>
-
+        <BookDetials>
+          <Link to={props.to}>
+            <BookName>{props.bookName}</BookName>
+          </Link>
+          <BookAuthor>{props.bookAuthor}</BookAuthor>
+          <CheckColor classify={props.classify}></CheckColor>
+        </BookDetials>
+      </div>
       <BookComment>{props.comment}</BookComment>
     </BookItem>
   )
