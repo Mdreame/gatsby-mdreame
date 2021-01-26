@@ -22,7 +22,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const blogResult = await graphql(`
     query {
       allMarkdownRemark(
-        filter: { frontmatter: { categrory: { eq: "博客" } } }
+        filter: { frontmatter: { categrory: { eq: "编程" } } }
       ) {
         edges {
           node {

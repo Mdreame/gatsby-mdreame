@@ -1,9 +1,8 @@
 ---
 title: "React概述"
 date: "2021-01-21 23:45:01"
-tags: "编程"
-categrory: "博客"
-
+tags: "React"
+categrory: "编程"
 ---
 
 
@@ -75,7 +74,7 @@ console.log (output) //=> [2,4,6]
 2. 将其渲染到页面。
 
    ```jsx
-   React.render(VDOM, document.getElementById("app"))		
+   ReactDOM.render(VDOM, document.getElementById("app"))		
    ```
 
 ## JSX语法
@@ -102,7 +101,7 @@ JSX是JS语言的扩展，在其中可以使用JS。
    <Btn>{ foo(a) }</Btn>	//函数
    ```
 
-3. 样式类名由`class`改为`className`;
+3. 样式类名由`class`改为`className`，`for`改为`htmlFor`;
 
 4. 内联样式必须用双括号，外面括号表示其为表达式，里面括号表明其为对象，如规则2中所示;
 

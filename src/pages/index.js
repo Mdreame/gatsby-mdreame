@@ -51,7 +51,7 @@ export default ({ data }) => {
             <p
               style={{
                 margin: `0.2em 0`,
-                fontSize: `1em`,
+                fontSize: `0.875rem`,
                 color: `#555`,
               }}
             >
