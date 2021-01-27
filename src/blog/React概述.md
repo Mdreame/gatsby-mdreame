@@ -2,7 +2,7 @@
 title: "React概述"
 date: "2021-01-21 23:45:01"
 tags: "React"
-categrory: "编程"
+categrory: "Tech"
 ---
 
 

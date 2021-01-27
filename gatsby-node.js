@@ -18,11 +18,62 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
+  //查询电影
+
+  const movieResult = await graphql(`
+    query {
+      allMarkdownRemark(
+        filter: { frontmatter: { categrory: { eq: "Movie" } } }
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+  //查询音乐
+  const musicResult = await graphql(`
+    query {
+      allMarkdownRemark(
+        filter: { frontmatter: { categrory: { eq: "Music" } } }
+      ) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+  //查询随笔
+  const essayResult = await graphql(`
+    query {
+      allMarkdownRemark(
+        filter: { frontmatter: { categrory: { eq: "Essay" } } }
+      ) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
   //查询所有博客路径
   const blogResult = await graphql(`
     query {
       allMarkdownRemark(
-        filter: { frontmatter: { categrory: { eq: "编程" } } }
+        filter: { frontmatter: { categrory: { eq: "Tech" } } }
       ) {
         edges {
           node {
@@ -39,7 +90,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const booksResult = await graphql(`
     query {
       allMarkdownRemark(
-        filter: { frontmatter: { categrory: { eq: "bookreviews" } } }
+        filter: { frontmatter: { categrory: { eq: "Book" } } }
       ) {
         edges {
           node {
@@ -67,16 +118,16 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
   //将所有标签格式化成一个数组，并去重
-    let allTags = [];
-    allTagsResult.data.allMarkdownRemark.edges.map(({node}) => {
-      allTags = allTags.concat(node.frontmatter.tags.split(','))
-    })
+  let allTags = []
+  allTagsResult.data.allMarkdownRemark.edges.map(({ node }) => {
+    allTags = allTags.concat(node.frontmatter.tags.split(","))
+  })
 
-    function unique (arr) {
-      return Array.from(new Set(arr))
-    }
+  function unique(arr) {
+    return Array.from(new Set(arr))
+  }
 
-    allTags = unique(allTags)
+  allTags = unique(allTags)
 
   // 生成博客页面
   blogResult.data.allMarkdownRemark.edges.forEach(({ node }) => {
@@ -99,16 +150,45 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
   //生成标签相关的所有的内容的页面
-  allTags.forEach( tag => {
+  allTags.forEach(tag => {
     let regexTag = `/${tag}/`
     createPage({
-      path:`/tags/${tag}`,
-      component: path.resolve('./src/templates/tag-relative-books-template.js'),
+      path: `/tags/${tag}`,
+      component: path.resolve("./src/templates/tag-relative-books-template.js"),
       context: {
         regexTag,
-        allTags,
+        tag,
       },
-
+    })
+  })
+  //生成电影内容页
+  movieResult.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/movie-template.js`),
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  })
+  //音乐内容页
+  musicResult.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/music-template.js`),
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  })
+  //随笔页
+  essayResult.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/essay-template.js`),
+      context: {
+        slug: node.fields.slug,
+      },
     })
   })
 }

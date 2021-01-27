@@ -83,7 +83,7 @@ export const query = graphql`
   query {
     allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
-      filter: { frontmatter: { categrory: { nin: ["bookreviews"] } } }
+      filter: { frontmatter: { categrory: { nin: ["Book","Movie","Music"] } } }
     ) {
       edges {
         node {

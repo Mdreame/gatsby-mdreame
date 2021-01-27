@@ -90,7 +90,7 @@ export default ({ data }) => {
     & h3 {
       color: #1661ab;
     }
-    & p:first-child::first-letter {
+    & p:first-of-type::first-letter {
       font-size: 2rem;
       float: left;
       line-height: 1;

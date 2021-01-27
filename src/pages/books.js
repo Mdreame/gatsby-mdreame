@@ -29,16 +29,6 @@ export default ({ data }) => {
             comment={node.frontmatter.comment}
           ></Bookscover>
         ))}
-
-        {/* <Bookscover></Bookscover>
-      <Bookscover></Bookscover>
-      <Bookscover></Bookscover>
-      <Bookscover></Bookscover>
-      <Bookscover></Bookscover>
-      <Bookscover></Bookscover>
-      <Bookscover></Bookscover>
-      <Bookscover></Bookscover>
-      <Bookscover></Bookscover> */}
       </GridBox>
     </Layout>
   )
@@ -48,7 +38,7 @@ export const query = graphql`
   query {
     allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
-      filter: { frontmatter: { categrory: { eq: "bookreviews" } } }
+      filter: { frontmatter: { categrory: { eq: "Book" } } }
     ) {
       edges {
         node {

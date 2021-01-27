@@ -1,21 +1,24 @@
 import React from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
-import {css} from "@emotion/react"
+import { css } from "@emotion/react"
 // import SEO from "../components/seo"
 
 export default ({ data }) => {
   const post = data.markdownRemark
   return (
     <Layout>
-        {/* <SEO title={post.frontmatter.title} description={post.excerpt}></SEO> */}
-      <div css={css`
-        & p{
-          margin-bottom: 0;
-        }
-      `}>
+      {/* <SEO title={post.frontmatter.title} description={post.excerpt}></SEO> */}
+      <div
+        css={css`
+          & p {
+            margin-bottom: 0;
+            text-align: left;
+          }
+        `}
+      >
         <h1>{post.frontmatter.title}</h1>
-        <div dangerouslySetInnerHTML={{__html: post.html}}></div>
+        <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
       </div>
     </Layout>
   )
