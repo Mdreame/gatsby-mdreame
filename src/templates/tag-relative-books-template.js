@@ -105,7 +105,6 @@ export default ({ data, pageContext }) => {
     }
   }
   function ShowCurTag(){
-    console.log(pageContext.tag)
     return <SeeTagsList># {pageContext.tag}</SeeTagsList>
   }
 

@@ -14,8 +14,8 @@ export default props => {
     }
 
     &:after {
-      counter-increment: imgNum;
-      content: counter(imgNum);
+      counter-increment: singerImgNum;
+      content: counter(singerImgNum);
       display: block;
       width: 2rem;
       height: 2rem;
@@ -38,7 +38,7 @@ export default props => {
     padding: 0 0 1% 1%;
     overflow: hidden;
 
-    @media (min-width:480px and max-width: 900px){
+    @media (min-width: 480px and max-width: 900px) {
       max-width: 80px;
     }
   `
@@ -47,7 +47,7 @@ export default props => {
     padding: 0;
     border: 1px dotted #ddd none;
     box-shadow: 6px 8px 8px 2px #aaa8;
-    // width: 50%;
+    // width: 80%;
     min-width: 100px;
     min-height: 130px;
     max-height: 150px;
@@ -87,16 +87,15 @@ export default props => {
     display: inline-block;
     font-size: 0.8rem;
     line-height: 1.75;
-    // background-color: #aaa5;
     padding: 0 0.4em;
     border-radius: 0.4em;
-    // color: #555;
   `
   const BookComment = styled.div`
     margin: 1.5em 0 1em 0;
     font-size: 0.875rem;
     color: #615959e8;
     text-align: justify;
+    // 文本溢出
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

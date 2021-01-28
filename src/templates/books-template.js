@@ -39,6 +39,7 @@ export default ({ data }) => {
   const BookCover = styled.img`
     position: absolute;
     min-height: 250px;
+    width: 80%;
     max-height: 350px;
     max-width: 250px;
     clip: rect(0px 250px 236px 15px);

@@ -5,6 +5,7 @@ import {graphql} from "gatsby"
 import GridBox from "../components/gridbox"
 import Bookscover from "../components/partical/bookitem"
 import TotalBar from "../components/partical/totalbar"
+// import Test from "./test"
 
 export default ({ data }) => {
   const postReviews = data.allMarkdownRemark
