@@ -26,7 +26,23 @@ module.exports = {
         name: `src`,
         path: `${__dirname}/src/`,
       },
-    },
+    },{
+      resolve:`gatsby-source-mongodb`,
+      options:{
+        dbName:`music`,
+        collection:["song","albumn","artist"],
+        server:{
+          address:`mdreame.life`,
+          port: 27017,
+        },
+        auth:{
+          user:`jiang`,
+          password:`123456`
+        },
+        // extraParams: {  ssl: true, authSource: `admin`, retryWrites: true }
+      },
+
+    }
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {

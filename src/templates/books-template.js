@@ -128,7 +128,7 @@ export default ({ data }) => {
 
         {/* 将标签字符串格式化为数组 */}
         <Tags>{post.frontmatter.tags.split(",")}</Tags>
-
+              {console.log("书评页")}
         <BookReview
           dangerouslySetInnerHTML={{ __html: post.html }}
         ></BookReview>

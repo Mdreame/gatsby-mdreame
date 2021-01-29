@@ -102,6 +102,19 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+  //专辑页
+  const albumnsResult = await graphql(`
+    query  {
+      allMongodbMusicAlbumn {
+        edges {
+          node {
+            name
+            artist
+          }
+        }
+      }
+    }
+  `)
 
   //查询所有标签相关的内容页面
   const allTagsResult = await graphql(`
@@ -171,7 +184,7 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-  //音乐内容页
+  //音评页
   musicResult.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
@@ -179,6 +192,17 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         slug: node.fields.slug,
       },
+    })
+  })
+  //专辑页面
+  albumnsResult.data.allMongodbMusicAlbumn.edges.forEach(({node}) => {
+    console.log(node.name)
+    createPage({
+      path: `/albumn/${node.name}`,
+      component: path.resolve(`./src/templates/music-albumn.js`),
+      context:{
+        name: node.name
+      }
     })
   })
   //随笔页

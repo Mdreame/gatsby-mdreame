@@ -10,4 +10,6 @@ attachments:
 
 很早就知道这个乐队了，其实也是无意中发现的。
 
+<!-- https://music.163.com/song/media/outer/url?id=xxx.mp3 -->
+
 <!-- <video src="https://video.weibo.com/show?fid=1034:4345508291116150"></video> -->

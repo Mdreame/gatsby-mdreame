@@ -50,7 +50,7 @@ const PageHeader = styled.header`
   position: absolute;
   height: calc(100% - 5px);
   flex-direction: column;
-  width: 20%;
+  width: 16%;
   border-right: 1px solid #e4dbdb;
   left: 0;
   bottom: 0;
@@ -70,7 +70,7 @@ const PagesList = styled.ul`
   margin: 10% 0 0 0;
 `
 const PageContainerMove = {
-  padding: "1rem calc(1.75rem) 5rem calc(20% + 2rem)",
+  padding: "1rem calc(1.75rem) 5rem calc(16% + 2rem)",
   // marginLeft: "calc(10% + 2rem)",
   transition: `0.6s ease`,
   // transform: "rotate3d(0, 1, 0, 3deg) translate3d(0, 0, 0)",
@@ -93,9 +93,7 @@ class Layout extends React.Component {
   }
 
   isToggle() {
-    console.log("click")
     this.setState({ toggle: !this.state.toggle })
-    console.log(this.state.toggle)
   }
 
   render() {
