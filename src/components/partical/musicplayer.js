@@ -74,7 +74,7 @@ const AlbumnShelf = styled.span`
   margin: 0.75rem auto 0.5rem;
   position: relative;
   border-radius: 0.5rem;
-  
+
   &:after {
     content: "";
     width: 66px;
@@ -86,12 +86,6 @@ const AlbumnShelf = styled.span`
     z-index: -1;
   }
 `
-// const AlbumnCoverHide = {
-//   opacity: 0,
-// }
-// const AlbumnCoverShow = {
-//   opacity: 1,
-// }
 const Rotate = {
   animation: `playMusic 16s linear 0.5s infinite running`,
   // zIndex: "3",
@@ -102,7 +96,19 @@ const Rotate = {
 const StopRotate = {
   animation: `playMusic 16s linear 0.5s infinite paused`,
 }
+const AlbumnInfo = styled.div`
+  margin-top: 1rem;
+  padding: 0.5rem;
 
+  & span,
+  p,
+  h3 {
+    color: #868686;
+    font-size: 0.75rem;
+    margin: 0;
+    line-height: 1;
+  }
+`
 export default class Player extends React.Component {
   constructor(props) {
     super(props)
@@ -123,45 +129,65 @@ export default class Player extends React.Component {
     const { isPlay } = this.state
     console.log(isPlay)
 
+    const albumn = this.props
     return (
       <div>
-        <h3>{this.props.name}</h3>
         <AlbumnContainer>
           <AlbumnCover
-            style={{ backgroundImage: `url(${this.props.cover})` }}
+            style={{ backgroundImage: `url(${albumn.cover})` }}
             className={`shadow`}
             // style={isPlay ? AlbumnCoverHide : AlbumnCoverShow}
           ></AlbumnCover>
           <AlbumnCD
-            src={this.props.cover}
-            alt={this.props.name}
+            src={albumn.cover}
+            alt={albumn.name}
             style={isPlay ? Rotate : StopRotate}
           ></AlbumnCD>
         </AlbumnContainer>
         <AlbumnShelf></AlbumnShelf>
-        <h3>{this.props.songName}</h3>
+        <AlbumnInfo>
+          <h4
+            style={{
+              fontSize: `1.5rem`,
+              fontWeight: "600",
+              color: "#4e6e6f",
+              marginBottom: `0.5rem`,
+            }}
+          >
+            {albumn.name}
+          </h4>
+          <p style={{ margin: "0", fontSize: "0.875rem", color: "#868686" }}>
+            By:
+            <span style={{ color: `#444`, fontWeight: "600" }}>
+              {albumn.artist}
+            </span>
+          </p>
+          <span>{albumn.pubTime}</span>
+          <span> {albumn.songNum}首</span>
+          <h3>{albumn.songName}</h3>
+        </AlbumnInfo>
 
         <audio
           ref={el => {
             this.player = el
           }}
-          src={this.props.url}
+          src={albumn.url}
           controls
         >
           <track></track>
         </audio>
 
         {/* 上一張專輯 */}
-        {this.props.pre ? (
-          <Link to={`/albumn/${this.props.pre}`}>
-            <p>上一张{this.props.pre}</p>
+        {albumn.pre ? (
+          <Link to={`/albumn/${albumn.pre}`}>
+            <p>上一张{albumn.pre}</p>
           </Link>
         ) : null}
 
         {/* 下一張专辑 */}
-        {this.props.next ? (
-          <Link to={`/albumn/${this.props.next}`} onClick={this.nextAlbumn}>
-            <p>下一张{this.props.next}</p>
+        {albumn.next ? (
+          <Link to={`/albumn/${albumn.next}`} onClick={this.nextAlbumn}>
+            <p>下一张{albumn.next}</p>
           </Link>
         ) : null}
         <button onClick={this.checkPlay}>play</button>

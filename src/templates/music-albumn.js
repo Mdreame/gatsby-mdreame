@@ -17,6 +17,9 @@ export default ({ data, pageContext }) => {
             next={pageContext.next ? pageContext.next.node.name : null}
             songName={albumn.songs[0].name}
             url={albumn.songs[0].url}
+            artist={albumn.artist}
+            pubTime={albumn.pubTime}
+            songNum={albumn.songs.length}
           ></MusicPlayer>
           {/* <h1>{albumn.name}</h1>
           <img src={albumn.cover} alt={albumn.name}></img>
@@ -39,7 +42,7 @@ export const query = graphql`
         url
       }
       artist
-      pubTime(formatString: "YYYY-MM-DD")
+      pubTime(formatString: "YYYY")
     }
   }
 `
