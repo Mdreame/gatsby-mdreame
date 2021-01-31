@@ -8,4 +8,9 @@
 
     counter-reset: imgNum;
     counter-reset: singerImgNum;
+
+    --albumnContainerWidth: 300px;
+    --albumnCoverWidth: 160px;
+    --albumnCDWidth: 60px;
+    
 }

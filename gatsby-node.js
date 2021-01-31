@@ -195,15 +195,23 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
   //专辑页面
-  albumnsResult.data.allMongodbMusicAlbumn.edges.forEach(({node}) => {
-    console.log(node.name)
+
+  let pre = "",next = ""
+
+  albumnsResult.data.allMongodbMusicAlbumn.edges.forEach(({node},index) => {
+    console.log(`${node.name}: ${index}`)
+    pre = albumnsResult.data.allMongodbMusicAlbumn.edges[index - 1]
+    next = albumnsResult.data.allMongodbMusicAlbumn.edges[index + 1]
     createPage({
       path: `/albumn/${node.name}`,
       component: path.resolve(`./src/templates/music-albumn.js`),
       context:{
-        name: node.name
+        name: node.name,
+        pre,
+        next,
       }
     })
+
   })
   //随笔页
   essayResult.data.allMarkdownRemark.edges.forEach(({ node }) => {

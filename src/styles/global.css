@@ -160,3 +160,28 @@ hr {
   background-color: #006bf1bf;
   color: aliceblue;
 }
+
+/* 播放动画 */
+@keyframes playMusic{
+  from {
+    transform: rotate(0deg);
+   
+  }
+  25%{
+ 
+  }
+  50%{
+  
+  }
+  75%{
+
+  }
+  to {
+    transform: rotate(360deg);
+   
+  }
+}
+
+.shadow {
+  background-color: #336699;
+}

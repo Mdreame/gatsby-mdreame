@@ -80,7 +80,6 @@ export default ({ data }) => {
   return (
     <Layout>
       {/* 乐评页 */}
-      <GridBox>
         {musicdata.edges.map(({ node }) => {
           // console.log(node.frontmatter.attachments)
           return (
@@ -103,7 +102,6 @@ export default ({ data }) => {
             </SingerContainer>
           )
         })}
-      </GridBox>
       <GridBox>
         {albumndata.edges.map(({ node }) => {
           return (
