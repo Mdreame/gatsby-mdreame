@@ -141,7 +141,7 @@ const PlayBtn = styled.button`
 export default class Player extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { isPlay: false, start: false }
+    this.state = { isPlay: false, start: false, toggleBtn: false }
     this.player = null
     this.checkPlay = this.checkPlay.bind(this)
   }
@@ -150,8 +150,14 @@ export default class Player extends React.Component {
     this.state.isPlay
       ? this.delayPlay(this.player, "paused", 500)
       : this.delayPlay(this.player, "start", 500)
-    this.setState({ start: !this.state.start })
 
+    //摇杆移动
+    this.setState({
+      start: !this.state.start,
+      toggleBtn: !this.state.toggleBtn,
+    })
+
+    //播放结束
     this.player.addEventListener("ended", e => {
       console.log(e)
       this.setState({ isPlay: false, start: false })
@@ -168,16 +174,16 @@ export default class Player extends React.Component {
     }, ms)
   }
   render() {
-    const { isPlay, start } = this.state
+    const { isPlay, start, toggleBtn } = this.state
 
     const albumn = this.props
 
     const PlayBtnImg = {
-      backgroundImage: `url(https://picture.mdreame.life/play.png)`,
+      backgroundImage: `url(https://picture.mdreame.life/musicplay.png)`,
       backgroundSize: "cover",
     }
     const StopBtnImg = {
-      backgroundImage: `url(https://picture.mdreame.life/stop.png)`,
+      backgroundImage: `url(https://picture.mdreame.life/musicstop.png)`,
       backgroundSize: "cover",
     }
     return (
@@ -185,7 +191,7 @@ export default class Player extends React.Component {
         <AlbumnContainer>
           <PlayBtn
             onClick={this.checkPlay}
-            style={isPlay ? StopBtnImg : PlayBtnImg}
+            style={toggleBtn ? StopBtnImg : PlayBtnImg}
           ></PlayBtn>
           <AlbumnCover
             style={{ backgroundImage: `url(${albumn.cover})` }}
@@ -225,7 +231,9 @@ export default class Player extends React.Component {
           <span>{albumn.pubTime} - </span>
           <span> {albumn.songNum}首</span>
           {/* <h3>{albumn.songName}</h3> */}
-          <p>{albumn.info}</p>
+          <p style={{ fontSize: `0.875rem`, marginTop: `0.5rem` }}>
+            {albumn.info}
+          </p>
         </AlbumnInfo>
 
         <audio

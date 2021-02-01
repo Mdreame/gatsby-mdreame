@@ -3,13 +3,12 @@ import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
-import GridBox from "../components/gridbox"
 
 const SingerContainer = styled.div`
-  padding: 1rem;
+  padding: 0.5rem;
   margin: 0 auto;
   // min-width: 250px;
-  max-width: 400px;
+  max-width: 300px;
   position: relative;
   border-radius: 5px;
 
@@ -18,14 +17,14 @@ const SingerContainer = styled.div`
     content: counter(singerImgNum);
     // content: "1";
     position: absolute;
-    right: 16px;
-    top: 16px;
-    width: 32px;
-    height: 32px;
+    right: 8px;
+    top: 8px;
+    width: 24px;
+    height: 24px;
     background: #fff;
     text-align: center;
     font-size: 1rem;
-    line-height: 32px;
+    line-height: 24px;
     border-radius: 0px 4px 0px 12px;
     color: #00355a;
   }
@@ -33,12 +32,13 @@ const SingerContainer = styled.div`
 
 const SingerImg = styled.img`
   border-radius: 5px;
+  min-width: 150px;
 `
 
 const SingerName = styled.h3`
   margin: 0;
   color: #4e6e6f;
-  font-weight: 600;
+  font-size: 1rem;
 `
 
 const SingerType = styled.span`
@@ -52,34 +52,39 @@ const SingerType = styled.span`
   line-height: 0.5rem;
 `
 const SingerIntro = styled.div`
-  border-left: 2px solid #aaa;
-  padding-left: 1rem;
   & p {
-    font-size: 0.875rem;
-    color: #4a4646;
+    font-size: 0.75rem;
+    color: #655e5e;
+    line-height: 1.5;
   }
 `
 const AlbumnContainer = styled.div`
-max-width: 150px;
+  max-width: 150px;
+  margin: 0.5rem 1rem 0.5rem 0;
 `
 const AlbumnName = styled.h3`
   font-size: 0.875rem;
   line-height: 1;
   margin: 0;
+  max-width: 90px;
 `
 const AlbumnArtist = styled.span`
   font-size: 0.75rem;
 `
 const AlbumnCover = styled.img`
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 90px;
+  max-height: 90px;
+`
+const SectionHeader = styled.h2`
+  color: #255158;
 `
 export default ({ data }) => {
   const musicdata = data.allMarkdownRemark
   const albumndata = data.allMongodbMusicAlbumn
   return (
     <Layout>
-      {/* 乐评页 */}
+      <SectionHeader>Music Reviews</SectionHeader>
+      <div style={{ display: "flex", justifyContent: `space-around` }}>
         {musicdata.edges.map(({ node }) => {
           // console.log(node.frontmatter.attachments)
           return (
@@ -102,19 +107,21 @@ export default ({ data }) => {
             </SingerContainer>
           )
         })}
-      <GridBox>
+      </div>
+      <SectionHeader>Favorites</SectionHeader>
+      <div style={{ display: "flex" }}>
         {albumndata.edges.map(({ node }) => {
           return (
             <AlbumnContainer key={node.mongodb_id}>
-              <Link to={`/albumn/${node.name}`}>
-              <AlbumnCover src={node.cover} alt={node.name}></AlbumnCover>
+              <Link to={`/albumn/${node.name}`} style={{ border: `none` }}>
+                <AlbumnCover src={node.cover} alt={node.name}></AlbumnCover>
               </Link>
               <AlbumnName>{node.name}</AlbumnName>
               <AlbumnArtist>{node.artist}</AlbumnArtist>
             </AlbumnContainer>
           )
         })}
-      </GridBox>
+      </div>
     </Layout>
   )
 }

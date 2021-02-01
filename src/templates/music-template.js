@@ -14,10 +14,6 @@ export default ({ data }) => {
             <h1>{node.name}</h1>
           </div>
         ))}
-        {/* <h1>歌名：{song.name}</h1>
-        <p>歌手：{song.artist}</p>
-        <p>专辑：{song.albumn}</p>
-        <audio src={song.url} controls></audio> */}
         123
       </div>
     </Layout>
