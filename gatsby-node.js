@@ -110,6 +110,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             name
             artist
+            cover
           }
         }
       }
@@ -199,7 +200,6 @@ exports.createPages = async ({ graphql, actions }) => {
   let pre = "",next = ""
 
   albumnsResult.data.allMongodbMusicAlbumn.edges.forEach(({node},index) => {
-    console.log(`${node.name}: ${index}`)
     pre = albumnsResult.data.allMongodbMusicAlbumn.edges[index - 1]
     next = albumnsResult.data.allMongodbMusicAlbumn.edges[index + 1]
     createPage({

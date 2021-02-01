@@ -63,8 +63,21 @@ const AlbumnCD = styled.img`
       var(--albumnCDWidth) * 3 / 4 - 16px
   );
   //   box-shadow: 0px 0px 1px 1px #0008, 1px 0px 2px 1px #0008;
-  box-shadow: 0px 0px 1px 46px #000000de, 0px 0px 0px 7px #a09292de;
+  box-shadow: 0px 0px 0px 7px #000000, 0px 0px 1px 46px #1b1a1a;
   z-index: -1;
+`
+const AlbumnPin = styled.span`
+  background-image: url(https://picture.mdreame.life/player-pin.png);
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  right: -10px;
+  top: 20px;
+  display: block;
+  width: 50px;
+  height: 80px;
+  transform-origin: 14px 14px;
+  transition: 0.8s;
 `
 const AlbumnShelf = styled.span`
   display: block;
@@ -106,33 +119,74 @@ const AlbumnInfo = styled.div`
     color: #868686;
     font-size: 0.75rem;
     margin: 0;
-    line-height: 1;
+    // line-height: 1;
   }
 `
+const PlayBtn = styled.button`
+  content: "";
+  position: absolute;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  background-image: url(https://picture.mdreame.life/play.png);
+  bottom: 56px;
+  left: calc(
+    var(--albumnContainerWidth) / 2 - var(--albumnCDWidth) / 4 - 16px - 24px
+  );
+  width: 48px;
+  height: 48px;
+  z-index: 3;
+`
+
 export default class Player extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { isPlay: false }
+    this.state = { isPlay: false, start: false }
     this.player = null
     this.checkPlay = this.checkPlay.bind(this)
   }
 
   checkPlay() {
-    this.state.isPlay ? this.player.pause() : this.player.play()
+    this.state.isPlay
+      ? this.delayPlay(this.player, "paused", 500)
+      : this.delayPlay(this.player, "start", 500)
+    this.setState({ start: !this.state.start })
 
-    this.setState({
-      isPlay: !this.state.isPlay,
+    this.player.addEventListener("ended", e => {
+      console.log(e)
+      this.setState({ isPlay: false, start: false })
     })
   }
 
+  delayPlay(player, action, ms) {
+    setTimeout(() => {
+      action === "start" ? player.play() : player.pause()
+
+      this.setState({
+        isPlay: !this.state.isPlay,
+      })
+    }, ms)
+  }
   render() {
-    const { isPlay } = this.state
-    console.log(isPlay)
+    const { isPlay, start } = this.state
 
     const albumn = this.props
+
+    const PlayBtnImg = {
+      backgroundImage: `url(https://picture.mdreame.life/play.png)`,
+      backgroundSize: "cover",
+    }
+    const StopBtnImg = {
+      backgroundImage: `url(https://picture.mdreame.life/stop.png)`,
+      backgroundSize: "cover",
+    }
     return (
       <div>
         <AlbumnContainer>
+          <PlayBtn
+            onClick={this.checkPlay}
+            style={isPlay ? StopBtnImg : PlayBtnImg}
+          ></PlayBtn>
           <AlbumnCover
             style={{ backgroundImage: `url(${albumn.cover})` }}
             className={`shadow`}
@@ -143,8 +197,13 @@ export default class Player extends React.Component {
             alt={albumn.name}
             style={isPlay ? Rotate : StopRotate}
           ></AlbumnCD>
+
+          <AlbumnPin
+            style={start ? { transform: "rotate(45deg)" } : null}
+          ></AlbumnPin>
         </AlbumnContainer>
         <AlbumnShelf></AlbumnShelf>
+
         <AlbumnInfo>
           <h4
             style={{
@@ -156,15 +215,17 @@ export default class Player extends React.Component {
           >
             {albumn.name}
           </h4>
+
           <p style={{ margin: "0", fontSize: "0.875rem", color: "#868686" }}>
             By:
             <span style={{ color: `#444`, fontWeight: "600" }}>
               {albumn.artist}
             </span>
           </p>
-          <span>{albumn.pubTime}</span>
+          <span>{albumn.pubTime} - </span>
           <span> {albumn.songNum}首</span>
-          <h3>{albumn.songName}</h3>
+          {/* <h3>{albumn.songName}</h3> */}
+          <p>{albumn.info}</p>
         </AlbumnInfo>
 
         <audio
@@ -172,25 +233,78 @@ export default class Player extends React.Component {
             this.player = el
           }}
           src={albumn.url}
-          controls
         >
           <track></track>
         </audio>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: `2rem`,
+          }}
+        >
+          {/* 上一張專輯 */}
+          {albumn.pre ? (
+            <Link
+              to={`/albumn/${albumn.pre.name}`}
+              style={{ border: `none`, maxWidth: `120px` }}
+            >
+              <img
+                src={albumn.pre.cover}
+                alt={`${albumn.pre.name}`}
+                style={{
+                  width: `80px`,
+                  height: `80px`,
+                  margin: `0 auto`,
+                  display: `block`,
+                }}
+              ></img>
+              <p
+                style={{
+                  fontSize: `0.75rem`,
+                  overflow: `hidden`,
+                  textOverflow: `ellipsis`,
+                  display: "-webkit-box",
+                  WebkitLineClamp: "1",
+                  WebkitBoxOrient: "vertical",
+                }}
+              >
+                上一张：{albumn.pre.name}
+              </p>
+            </Link>
+          ) : null}
 
-        {/* 上一張專輯 */}
-        {albumn.pre ? (
-          <Link to={`/albumn/${albumn.pre}`}>
-            <p>上一张{albumn.pre}</p>
-          </Link>
-        ) : null}
-
-        {/* 下一張专辑 */}
-        {albumn.next ? (
-          <Link to={`/albumn/${albumn.next}`} onClick={this.nextAlbumn}>
-            <p>下一张{albumn.next}</p>
-          </Link>
-        ) : null}
-        <button onClick={this.checkPlay}>play</button>
+          {/* 下一張专辑 */}
+          {albumn.next ? (
+            <Link
+              to={`/albumn/${albumn.next.name}`}
+              style={{ border: `none`, maxWidth: `120px` }}
+            >
+              <img
+                src={albumn.next.cover}
+                alt={`${albumn.next.name}`}
+                style={{
+                  width: `80px`,
+                  height: `80px`,
+                  margin: `0 auto`,
+                  display: `block`,
+                }}
+              ></img>
+              <p
+                style={{
+                  fontSize: `0.75rem`,
+                  overflow: `hidden`,
+                  textOverflow: `ellipsis`,
+                  display: "-webkit-box",
+                  WebkitLineClamp: "1",
+                  WebkitBoxOrient: "vertical",
+                }}
+              >
+                下一张：{albumn.next.name}
+              </p>
+            </Link>
+          ) : null}
+        </div>
       </div>
     )
   }

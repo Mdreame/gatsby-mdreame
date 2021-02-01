@@ -13,20 +13,15 @@ export default ({ data, pageContext }) => {
           <MusicPlayer
             name={albumn.name}
             cover={albumn.cover}
-            pre={pageContext.pre ? pageContext.pre.node.name : null}
-            next={pageContext.next ? pageContext.next.node.name : null}
+            pre={pageContext.pre ? pageContext.pre.node : null}
+            next={pageContext.next ? pageContext.next.node : null}
             songName={albumn.songs[0].name}
             url={albumn.songs[0].url}
             artist={albumn.artist}
             pubTime={albumn.pubTime}
             songNum={albumn.songs.length}
+            info={albumn.info}
           ></MusicPlayer>
-          {/* <h1>{albumn.name}</h1>
-          <img src={albumn.cover} alt={albumn.name}></img>
-          <span>{albumn.artist}</span>
-          <span>{albumn.pubTime}</span>
-          <h3>{albumn.songs[0].name}</h3>
-          <audio src={albumn.songs[0].url} controls></audio> */}
         </div>
       </div>
     </Layout>
@@ -43,6 +38,7 @@ export const query = graphql`
       }
       artist
       pubTime(formatString: "YYYY")
+      info
     }
   }
 `
