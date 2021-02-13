@@ -160,7 +160,7 @@ export default class Player extends React.Component {
     //播放结束
     this.player.addEventListener("ended", e => {
       console.log(e)
-      this.setState({ isPlay: false, start: false })
+      this.setState({ isPlay: false, start: false, toggleBtn: false })
     })
   }
 
@@ -196,7 +196,7 @@ export default class Player extends React.Component {
           <AlbumnCover
             style={{ backgroundImage: `url(${albumn.cover})` }}
             className={`shadow`}
-            // style={isPlay ? AlbumnCoverHide : AlbumnCoverShow}
+          // style={isPlay ? AlbumnCoverHide : AlbumnCoverShow}
           ></AlbumnCover>
           <AlbumnCD
             src={albumn.cover}
