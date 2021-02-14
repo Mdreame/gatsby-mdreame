@@ -1,10 +1,12 @@
 import React from "react"
 import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
+import SEO from "../components/seo"
 
 export default ({ data }) => {
   return (
     <Layout>
+      <SEO title='💻' description='记录生活点滴'></SEO>
       <main
         style={{
           margin: `0 auto`,

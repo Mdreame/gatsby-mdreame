@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Tags from "../components/tags"
 import styled from "@emotion/styled"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 export default ({ data }) => {
   //将所有标签格式化成一个数组，并去重
@@ -27,6 +28,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="所有标签"></SEO>
         <TagsTitle>All Tags</TagsTitle>
         <Tags>{allTags}</Tags>
     </Layout>

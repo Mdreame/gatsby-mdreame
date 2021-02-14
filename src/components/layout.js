@@ -96,6 +96,20 @@ class Layout extends React.Component {
     this.setState({ toggle: !this.state.toggle })
   }
 
+  // componentDidMount() {
+  //   window.addEventListener('click', this.routerEvent);
+  // }
+  // componentWillUnmount() {
+  //   window.removeEventListener('hashchange', this.routerEvent);
+  // }
+
+  // routerEvent = (e) => {
+  //   // e.target.location.hash.replace("#","")
+  //   // 去掉#就能获取即将跳转的那个路由的url了
+  //   console.log(1);
+  //   window.scrollTo()
+  // }
+
   render() {
     return (
       <div>

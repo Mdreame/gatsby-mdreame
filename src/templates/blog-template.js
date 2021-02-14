@@ -2,13 +2,36 @@ import React from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import { css } from "@emotion/react"
-// import SEO from "../components/seo"
+import SEO from "../components/seo"
 
 export default ({ data }) => {
+
   const post = data.markdownRemark
+
+  //toc处理
+  const toc = post.tableOfContents
+  const tocPattern = /<a href="#(.*)">/g
+  const tocArr = [...toc.matchAll(tocPattern)]
+  const idArr = []
+  tocArr.map((tocItem) => {
+    idArr.push(tocItem[1])
+    return 0
+  })
+  //toc-为标题增加id属性
+  const headerPattern = /<h[1-6]>(.*)<\/h[1-6]>/g
+  let pageContent = post.html
+  const headerArr = [...pageContent.matchAll(headerPattern)]
+  headerArr.map((item, index) => {
+    const anchor = /<(h[1-6])>/g
+    anchor.exec(item[0])
+    const newStr = item[0].replace(RegExp.$1, `${RegExp.$1} id="${idArr[index]}"`)
+    pageContent = pageContent.replace(item[0], newStr)
+    return 0
+  })
+
   return (
     <Layout>
-      {/* <SEO title={post.frontmatter.title} description={post.excerpt}></SEO> */}
+      <SEO title={post.frontmatter.title} description={post.excerpt}></SEO>
       <div
         css={css`
           & p {
@@ -47,7 +70,7 @@ export default ({ data }) => {
         ></div>
         <div
           style={{ marginTop: `2rem` }}
-          dangerouslySetInnerHTML={{ __html: post.html }}
+          dangerouslySetInnerHTML={{ __html: pageContent }}
         ></div>
       </div>
     </Layout>

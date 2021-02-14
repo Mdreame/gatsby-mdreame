@@ -2,12 +2,13 @@ import React from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import MusicPlayer from "../components/partical/musicplayer"
-// import SEO from "../components/seo"
+import SEO from "../components/seo"
 
 export default ({ data, pageContext }) => {
   const albumn = data.mongodbMusicAlbumn
   return (
     <Layout>
+      <SEO title={albumn.name} description={albumn.info}></SEO>
       <div>
         <div>
           <MusicPlayer

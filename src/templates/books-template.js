@@ -3,10 +3,12 @@ import Layout from "../components/layout"
 import styled from "@emotion/styled"
 import { graphql } from "gatsby"
 import Tags from "../components/tags"
+import SEO from "../components/seo"
 
 // import SEO from "../components/seo"
 export default ({ data }) => {
   const post = data.markdownRemark
+
 
   const BookName = styled.h3`
     border-bottom: 1px dashed #8c7f7f;
@@ -104,7 +106,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      {/* <SEO title={post.frontmatter.title} description={post.excerpt}></SEO> */}
+      <SEO title={post.frontmatter.bookname} description={post.frontmatter.comment}></SEO>
       <div>
         <BookName>
           {post.frontmatter.bookname}

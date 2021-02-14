@@ -7,8 +7,8 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "deploy": "gatsby build && cd public && git add . && git commit -m \"v0.4.9.3 happy new year\" && git push vmgit master ",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "deploy": "gatsby build && cd public && git add . && git commit -m \"v0.5.1 update:add table of content for blog and essay pages\" && git push gitvm master ",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"", 
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -19,11 +19,16 @@
     "@emotion/styled": "^11.0.0",
     "gatsby": "^2.26.1",
     "gatsby-plugin-emotion": "^5.2.0",
+    "gatsby-plugin-manifest": "^2.12.0",
+    "gatsby-plugin-offline": "^3.10.0",
+    "gatsby-plugin-react-helmet": "^3.10.0",
     "gatsby-source-filesystem": "^2.9.1",
     "gatsby-source-mongodb": "^2.9.0",
     "gatsby-transformer-remark": "^2.14.0",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-helmet": "^6.1.0",
+    "react-router": "^5.2.0"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0",

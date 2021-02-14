@@ -5,7 +5,6 @@ import { graphql } from "gatsby"
 
 export default ({ data }) => {
   const albumn = data.allMongodbMusicAlbumn.edges
-  console.log(albumn)
   return (
     <Layout>
       <div>

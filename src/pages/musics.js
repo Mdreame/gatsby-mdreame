@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
+import SEO from "../components/seo"
 
 const SingerContainer = styled.div`
   padding: 0.5rem;
@@ -83,6 +84,7 @@ export default ({ data }) => {
   const albumndata = data.allMongodbMusicAlbumn
   return (
     <Layout>
+      <SEO title="音" description="音乐影响心灵"></SEO>
       <SectionHeader>Music Reviews</SectionHeader>
       <div style={{ display: "flex", justifyContent: `space-around` }}>
         {musicdata.edges.map(({ node }) => {
@@ -100,10 +102,6 @@ export default ({ data }) => {
               <SingerIntro
                 dangerouslySetInnerHTML={{ __html: node.html }}
               ></SingerIntro>
-
-              {/* {node.frontmatter.attachments.map((item,index) => (
-                <img key={index} src={item.publicURL} alt={node.frontmatter.title}></img>
-              ))} */}
             </SingerContainer>
           )
         })}

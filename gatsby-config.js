@@ -9,7 +9,7 @@ module.exports = {
   siteMetadata: {
     title: `Mdreame`,
     description: `一个在现实中无处安身的人`,
-    author: `xujiang`
+    author: `徐江`
 
   },
   plugins: [
@@ -26,34 +26,33 @@ module.exports = {
         name: `src`,
         path: `${__dirname}/src/`,
       },
-    },{
-      resolve:`gatsby-source-mongodb`,
-      options:{
-        dbName:`music`,
-        collection:["song","albumn","artist"],
-        server:{
-          address:`mdreame.life`,
+    }, {
+      resolve: `gatsby-source-mongodb`,
+      options: {
+        dbName: `music`,
+        collection: ["song", "albumn", "artist"],
+        server: {
+          address: `mdreame.life`,
           port: 27017,
         },
-        auth:{
-          user:`jiang`,
-          password:`123456`
+        auth: {
+          user: `jiang`,
+          password: `123456`
         },
         // extraParams: {  ssl: true, authSource: `admin`, retryWrites: true }
       },
 
-    }
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `jiang's blog`,
-    //     short_name: `一卒荷戟`,
-    //     start_url: `/`,
-    //     display: `standalone`,
-    //     // icon: `src/images/favicon.png`, // This path is relative to the root of the site.
-    //   },
-    // },
-    // `gatsby-plugin-offline`,
-    // `gatsby-plugin-react-helmet`
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `GatsbyJS`,
+        short_name: `GatsbyJS`,
+        start_url: `/`,
+        icon: `static/favicon.ico`
+      }
+    },
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-react-helmet`
   ],
 }

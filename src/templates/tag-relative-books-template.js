@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
-// import SEO from "../components/seo"
+import SEO from "../components/seo"
 
 const PagesContainer = styled.ul`
   // margin: 1rem 0;
@@ -110,7 +110,8 @@ export default ({ data, pageContext }) => {
 
   return (
     <Layout>
-      {/* <SEO title={post.frontmatter.title} description={post.excerpt}></SEO> */}
+      <SEO title={'# ' + pageContext.tag} description={`所有结果：${pageContext.tag}`}></SEO>
+
       <TagsBar>
         <ShowCurTag></ShowCurTag>
         <SeeTagsList>See
